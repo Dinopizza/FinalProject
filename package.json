@@ -2,7 +2,7 @@
   "name": "finalproject",
   "version": "1.0.0",
   "description": "Food Truck",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
     "test": "node ."
   },

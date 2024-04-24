@@ -10,5 +10,4 @@ app.use(express.static('public'))
 app.use("/", require('./routes/static'))
 app.use("/api", require('./routes/api-routes'))
 
-
 app.listen(port, () => console.log(`Server running: http://localhost:${port}`))

@@ -10,15 +10,17 @@ router.get("/", (_, response) => {
     response.json("Hi")
 })
 
-router.get("/api/menu/:id", async (_, response) => {
-
+router.get("/api/menu/:id", async (request, response) => {
+    const { id } = request.params
 })
 
 router.get("/api/events/:id", async (_, response) => {
+    const { id } = request.params
 
 })
 
 router.get("/contact", async (_, response) => {
+    const { id } = request.params
 
 })
 

@@ -1,0 +1,23 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "Food Truck",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dinopizza/FinalProject.git"
+  },
+  "author": "Jay-Ashton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dinopizza/FinalProject/issues"
+  },
+  "homepage": "https://github.com/Dinopizza/FinalProject#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0"
+  }
+}

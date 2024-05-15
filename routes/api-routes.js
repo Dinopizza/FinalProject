@@ -70,14 +70,4 @@ router.delete("/events/:id", async (_, response) => { //This route should allow 
 })
 //#endregion
 
-//#region Other/
-router.get("/contact", async (_, response) => { //Create a contact page that displays the contact information for the food truck. Include a (non-working) contact form.
-    response.sendFile('contact.html', { root })
-})
-
-router.get("/admin", async (_, response) => { //Create an admin page that allows the food truck owner to manage the menu and events. The admin page should include forms to add, update, and delete menu items and events.
-    response.sendFile('admin.html', { root })
-})
-//#endregion
-
 module.exports = router

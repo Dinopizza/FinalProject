@@ -2,6 +2,8 @@ const express = require('express')
 const { MongoClient, ObjectId } = require('mongodb')
 
 const router = express.Router()
+const path = require('path')
+const root = path.join(__dirname, '..', 'public')
 
 const { url } = require('../secrets/mongodb.json')
 const client = new MongoClient(url)
@@ -21,7 +23,8 @@ router.get("/", (_, response) => {
 router.get("/menu/", async (request, response) => { //This route should return a list of all items on the menu. The response should be a JSON array of items. The items should include an id, name, description, and price.
     const collection = await getCollection('FoodTruck', 'menu')
     const menuItem = await collection.find().toArray()
-    response.json(menuItem)
+    //I forgot how to change html before sending it.. something with request?
+    response.sendFile('menu.html', { root })
 })
 
 router.post("/menu/", async (request, response) => { //This route should allow the food truck owner to add a new item to the menu. The request body should contain the item name, description, and price.
@@ -73,11 +76,11 @@ router.delete("/events/:id", async (_, response) => { //This route should allow 
 
 //#region Other/
 router.get("/contact", async (_, response) => { //Create a contact page that displays the contact information for the food truck. Include a (non-working) contact form.
-
+    response.sendFile('contact.html', { root })
 })
 
 router.get("/admin", async (_, response) => { //Create an admin page that allows the food truck owner to manage the menu and events. The admin page should include forms to add, update, and delete menu items and events.
-
+    response.sendFile('admin.html', { root })
 })
 //#endregion
 

@@ -5,6 +5,7 @@ const app = express()
 const root = path.join(__dirname, 'public')
 const port = process.env.PORT || 3000
 
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static('public'))
 app.use("/", require('./routes/static'))

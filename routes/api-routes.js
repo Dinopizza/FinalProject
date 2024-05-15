@@ -27,20 +27,25 @@ router.get("/menu/", async (request, response) => { //This route should return a
 })
 
 router.post("/menu/", async (request, response) => { //This route should allow the food truck owner to add a new item to the menu. The request body should contain the item name, description, and price.
-    // const collection = await getCollection('FoodTruck', 'menu')
+    const collection = await getCollection('FoodTruck', 'menu')
     const { name, description, price } = request.body
-    console.log(name, description, price)
+    collection.insertOne({ name: name, description: description, price: price})
     response.json(request.body)
 })
 
 router.put("/menu/:id", async (request, response) => { //This route should allow the food truck owner to update an item on the menu. The route should accept an item ID as a parameter and update the item's name, description, and price.
-
+    const { id } = request.params
+    const collection = await getCollection('FoodTruck', 'menu')
+    const { name, description, price } = request.body
+    console.log(request.body, request.params)
+    collection.updateOne({_id: new ObjectId(id)}, {$set:{name: name, description: description, price: price}})
+    response.json(request.body)
 })
 
 router.delete("/menu/:id", async (request, response) => { //This route should allow the food truck owner to delete an item from the menu. The route should accept an item ID as a parameter and remove the item from the menu.
     const { id } = request.params
-    const collection = await getCollection('FoodTruck', 'events')
-    collection.findOneAndDelete( { _id: id } )
+    const collection = await getCollection('FoodTruck', 'menu')
+    collection.findOneAndDelete( { _id: new ObjectId(id) } )
 })
 //#endregion
 
@@ -59,7 +64,8 @@ router.get("/events/:id", async (request, response) => {
 })
 
 router.post("/events/", async (_, response) => { //This route should allow the food truck owner to add a new event. The request body should contain the event name, location, dates, and hours.
-    
+    const collection = await getCollection('FoodTruck', 'events')
+    const eventItem = await collection.insertOne({})
 })
 
 router.put("/events/:id", async (_, response) => { //This route should allow the food truck owner to update an event. The route should accept an event ID as a parameter and update the event's name, location, dates, and hours.

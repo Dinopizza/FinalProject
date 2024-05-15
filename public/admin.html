@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/site.css">
+    <script src="scripts/site.js" defer></script>
 </head>
 <body>
     <div class="wrapper">
@@ -22,7 +23,7 @@
     <div class="wrapper">
         <h1>Item Management</h1><br><hr>
         <h4>Add Item</h4>
-        <form method="post" action="/api/menu/">
+        <form id="AddItem" onsubmit="Admin_AddItem()">
             <label for="name">Name</label><br>
             <input type="text" name="name"><br>
             <label for="description">Description</label><br>
@@ -33,7 +34,7 @@
         </form><br><hr>
 
         <h4>Update Item</h4>
-        <form method="post" action="/api/menu/">
+        <form id="UpdateItem" onsubmit="Admin_UpdateItem()">
             <label for="name">ID:</label><br>
             <input type="text" name="id"><br><br>
             <label for="name">Name:</label><br>
@@ -46,7 +47,7 @@
         </form><br><hr>
 
         <h4>Delete Item</h4>
-        <form method="post" action="/api/menu/">
+        <form id="DeleteItem" onsubmit="Admin_DeleteItem()">
             <label for="name">ID:</label><br>
             <input type="text" name="id"><br><br>
             <input type="submit"></button>
@@ -56,31 +57,35 @@
     <div class="wrapper">
         <h1>Event Management</h1><br><hr>
         <h4>Add Event</h4>
-        <form method="post" action="/api/menu/">
+        <form id="AddEvent" onsubmit="Admin_AddEvent()">
             <label for="name">Name</label><br>
             <input type="text" name="name"><br>
-            <label for="description">Description</label><br>
-            <input type="text" name="description"><br>
-            <label for="price">Price</label><br>
-            <input type="text" name="price"><br><br>
+            <label for="location">Location</label><br>
+            <input type="text" name="location"><br>
+            <label for="dates">Dates</label><br>
+            <input type="text" name="dates"><br>
+            <label for="hours">Hours</label><br>
+            <input type="text" name="hours"><br><br>
             <input type="submit"></button>
         </form><br><hr>
 
         <h4>Update Event</h4>
-        <form method="post" action="/api/menu/">
+        <form id="UpdateEvent" onsubmit="Admin_UpdateEvent()">
             <label for="name">ID:</label><br>
             <input type="text" name="id"><br><br>
-            <label for="name">Name:</label><br>
+            <label for="name">Name</label><br>
             <input type="text" name="name"><br>
-            <label for="description">Description:</label><br>
-            <input type="text" name="description"><br>
-            <label for="price">Price:</label><br>
-            <input type="text" name="price"><br><br>
+            <label for="location">Location</label><br>
+            <input type="text" name="location"><br>
+            <label for="dates">Dates</label><br>
+            <input type="text" name="dates"><br>
+            <label for="hours">Hours</label><br>
+            <input type="text" name="hours"><br><br>
             <input type="submit"></button>
         </form><br><hr>
 
         <h4>Delete Event</h4>
-        <form method="post" action="/api/menu/">
+        <form id="DeleteEvent" onsubmit="Admin_DeleteEvent()">
             <label for="name">ID:</label><br>
             <input type="text" name="id"><br><br>
             <input type="submit"></button>

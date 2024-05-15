@@ -42,3 +42,83 @@ const getEventItems = async () => {
         document.body.insertBefore(text, currentDiv)
     });
 }
+
+const Admin_AddItem = async () => {
+    const form = document.getElementById("AddItem")
+    const o = {}
+    new FormData(form).forEach( (value, key) => o[ key ] = value)
+    fetch( `/api/menu/`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( o )
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+}
+const Admin_UpdateItem = async () => {
+    const form = document.getElementById("UpdateItem")
+    const o = {}
+    new FormData(form).forEach( (value, key) => o[ key ] = value)
+    fetch( `/api/menu/${form.id.value}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( o )
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+}
+const Admin_DeleteItem = async () => {
+    const form = document.getElementById("DeleteItem")
+    fetch( `/api/menu/${form.id.value}`, {
+        method: "DELETE"
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+}
+
+
+
+const Admin_AddEvent = async () => {
+    const form = document.getElementById("AddItem")
+    const o = {}
+    new FormData(form).forEach( (value, key) => o[ key ] = value)
+    fetch( `/api/menu/`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( o )
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+}
+const Admin_UpdateEvent = async () => {
+    const form = document.getElementById("UpdateItem")
+    const o = {}
+    new FormData(form).forEach( (value, key) => o[ key ] = value)
+    fetch( `/api/menu/${form.id.value}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( o )
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+    .catch( err => console.log(err))
+}
+const Admin_DeleteEvent = async () => {
+    const form = document.getElementById("DeleteItem")
+    fetch( `/api/menu/${form.id.value}`, {
+        method: "DELETE"
+    })
+    .then( raw => raw.json())
+    .then( data => console.log(data))
+}

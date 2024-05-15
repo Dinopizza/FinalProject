@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="styles/site.css">
+    <script src="scripts/site.js" defer></script>
+    <script>
+        window.onload = () => getEventItems()
+    </script>
 </head>
 <body>
     
@@ -26,9 +30,8 @@
         <p>HELLO, we aim to make your events POP! We love to serve food, play music, and make pizza. We be pumpin at these parties and events!! PIZZA COME GET YOUR PIZZA HERE</p>
     </div>
     <div class="wrapper">
-        <h1>Events!
-            
-        </h1>
+        <h1>Events!</h1>
     </div>
+    <div id="events"></div>
 </body>
 </html>

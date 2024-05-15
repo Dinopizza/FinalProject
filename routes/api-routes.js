@@ -45,18 +45,17 @@ router.delete("/menu/:id", async (request, response) => { //This route should al
 //#endregion
 
 //#region Events/
-router.get("/events/", async (_, response) => { //This route should return a list of all events where the food truck will be located. The response should be a JSON array of events. The events should include an id, and the name of the event.
-    const { id } = request.params
+router.get("/events/", async (_, response) => {
     const collection = await getCollection('FoodTruck', 'events')
     const eventItem = await collection.find().toArray()
     response.json(eventItem)
 })
 
-router.get("/events/:id", async (_, response) => { //This route should return a single event by ID. The route should accept an event ID as a parameter and return the event's name, location, dates, and hours.
+router.get("/events/:id", async (request, response) => {
     const { id } = request.params
     const collection = await getCollection('FoodTruck', 'events')
-    const eventItem = await collection.find().toArray()
-    response.json(eventItem[id])
+    const eventItem = await collection.findOne({ _id: new ObjectId(id)})
+    response.json(eventItem)
 })
 
 router.post("/events/", async (_, response) => { //This route should allow the food truck owner to add a new event. The request body should contain the event name, location, dates, and hours.

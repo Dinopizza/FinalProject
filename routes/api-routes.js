@@ -23,24 +23,24 @@ router.get("/", (_, response) => {
 router.get("/menu/", async (request, response) => { //This route should return a list of all items on the menu. The response should be a JSON array of items. The items should include an id, name, description, and price.
     const collection = await getCollection('FoodTruck', 'menu')
     const menuItem = await collection.find().toArray()
-    //I forgot how to change html before sending it.. something with request?
-    //response.sendFile('menu.html', { root })
     response.json(menuItem)
 })
 
 router.post("/menu/", async (request, response) => { //This route should allow the food truck owner to add a new item to the menu. The request body should contain the item name, description, and price.
-    const collection = await getCollection('FoodTruck', 'menu')
+    // const collection = await getCollection('FoodTruck', 'menu')
     const { name, description, price } = request.body
     console.log(name, description, price)
-    await response.json(request.body)
+    response.json(request.body)
 })
 
 router.put("/menu/:id", async (request, response) => { //This route should allow the food truck owner to update an item on the menu. The route should accept an item ID as a parameter and update the item's name, description, and price.
 
 })
 
-router.delete("/menu/id", async (request, response) => { //This route should allow the food truck owner to delete an item from the menu. The route should accept an item ID as a parameter and remove the item from the menu.
-
+router.delete("/menu/:id", async (request, response) => { //This route should allow the food truck owner to delete an item from the menu. The route should accept an item ID as a parameter and remove the item from the menu.
+    const { id } = request.params
+    const collection = await getCollection('FoodTruck', 'events')
+    collection.findOneAndDelete( { _id: id } )
 })
 //#endregion
 

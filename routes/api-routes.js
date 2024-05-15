@@ -24,18 +24,19 @@ router.get("/menu/", async (request, response) => { //This route should return a
     const collection = await getCollection('FoodTruck', 'menu')
     const menuItem = await collection.find().toArray()
     //I forgot how to change html before sending it.. something with request?
-    response.sendFile('menu.html', { root })
+    //response.sendFile('menu.html', { root })
+    response.json(menuItem)
 })
 
 router.post("/menu/", async (request, response) => { //This route should allow the food truck owner to add a new item to the menu. The request body should contain the item name, description, and price.
-
+    const collection = await getCollection('FoodTruck', 'menu')
+    const { name, description, price } = request.body
+    console.log(name, description, price)
+    await response.json(request.body)
 })
 
 router.put("/menu/:id", async (request, response) => { //This route should allow the food truck owner to update an item on the menu. The route should accept an item ID as a parameter and update the item's name, description, and price.
-    const { id } = request.params
-    const collection = await getCollection('FoodTruck', 'menu')
-    const menuItem = await collection.find().toArray()
-    response.json(menuItem[id])
+
 })
 
 router.delete("/menu/id", async (request, response) => { //This route should allow the food truck owner to delete an item from the menu. The route should accept an item ID as a parameter and remove the item from the menu.
@@ -45,7 +46,10 @@ router.delete("/menu/id", async (request, response) => { //This route should all
 
 //#region Events/
 router.get("/events/", async (_, response) => { //This route should return a list of all events where the food truck will be located. The response should be a JSON array of events. The events should include an id, and the name of the event.
-
+    const { id } = request.params
+    const collection = await getCollection('FoodTruck', 'events')
+    const eventItem = await collection.find().toArray()
+    response.json(eventItem)
 })
 
 router.get("/events/:id", async (_, response) => { //This route should return a single event by ID. The route should accept an event ID as a parameter and return the event's name, location, dates, and hours.
@@ -60,17 +64,10 @@ router.post("/events/", async (_, response) => { //This route should allow the f
 })
 
 router.put("/events/:id", async (_, response) => { //This route should allow the food truck owner to update an event. The route should accept an event ID as a parameter and update the event's name, location, dates, and hours.
-    const { id } = request.params
-    const collection = await getCollection('FoodTruck', 'events')
-    const eventItem = await collection.find().toArray()
-    response.json(eventItem[id])
 })
 
 router.delete("/events/:id", async (_, response) => { //This route should allow the food truck owner to delete an event. The route should accept an event ID as a parameter and remove the event from the list of events.
-    const { id } = request.params
-    const collection = await getCollection('FoodTruck', 'events')
-    const eventItem = await collection.find().toArray()
-    response.json(eventItem[id])
+
 })
 //#endregion
 

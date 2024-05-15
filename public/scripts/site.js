@@ -85,10 +85,10 @@ const Admin_DeleteItem = async () => {
 
 
 const Admin_AddEvent = async () => {
-    const form = document.getElementById("AddItem")
+    const form = document.getElementById("AddEvent")
     const o = {}
     new FormData(form).forEach( (value, key) => o[ key ] = value)
-    fetch( `/api/menu/`, {
+    fetch( `/api/events/`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -100,10 +100,10 @@ const Admin_AddEvent = async () => {
     .catch( err => console.log(err))
 }
 const Admin_UpdateEvent = async () => {
-    const form = document.getElementById("UpdateItem")
+    const form = document.getElementById("UpdateEvent")
     const o = {}
     new FormData(form).forEach( (value, key) => o[ key ] = value)
-    fetch( `/api/menu/${form.id.value}`, {
+    fetch( `/api/events/${form.id.value}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
@@ -115,8 +115,8 @@ const Admin_UpdateEvent = async () => {
     .catch( err => console.log(err))
 }
 const Admin_DeleteEvent = async () => {
-    const form = document.getElementById("DeleteItem")
-    fetch( `/api/menu/${form.id.value}`, {
+    const form = document.getElementById("DeleteEvent")
+    fetch( `/api/events/${form.id.value}`, {
         method: "DELETE"
     })
     .then( raw => raw.json())

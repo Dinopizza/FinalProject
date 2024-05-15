@@ -63,16 +63,26 @@ router.get("/events/:id", async (request, response) => {
     response.json(eventItem)
 })
 
-router.post("/events/", async (_, response) => { //This route should allow the food truck owner to add a new event. The request body should contain the event name, location, dates, and hours.
+router.post("/events/", async (request, response) => { //This route should allow the food truck owner to add a new event. The request body should contain the event name, location, dates, and hours.
     const collection = await getCollection('FoodTruck', 'events')
-    const eventItem = await collection.insertOne({})
+    const { name, location, dates, hours } = request.body
+    collection.insertOne({ name: name, location: location, dates: dates, hours: hours})
+    response.json(request.body)
 })
 
-router.put("/events/:id", async (_, response) => { //This route should allow the food truck owner to update an event. The route should accept an event ID as a parameter and update the event's name, location, dates, and hours.
+router.put("/events/:id", async (request, response) => { //This route should allow the food truck owner to update an event. The route should accept an event ID as a parameter and update the event's name, location, dates, and hours.
+    const { id } = request.params
+    const collection = await getCollection('FoodTruck', 'events')
+    const { name, location, dates, hours } = request.body
+    console.log(request.body, request.params)
+    collection.updateOne({_id: new ObjectId(id)}, {$set:{name: name, location: location, dates: dates, hours: hours}})
+    response.json(request.body)
 })
 
-router.delete("/events/:id", async (_, response) => { //This route should allow the food truck owner to delete an event. The route should accept an event ID as a parameter and remove the event from the list of events.
-
+router.delete("/events/:id", async (request, response) => { //This route should allow the food truck owner to delete an event. The route should accept an event ID as a parameter and remove the event from the list of events.
+    const { id } = request.params
+    const collection = await getCollection('FoodTruck', 'events')
+    collection.findOneAndDelete( { _id: new ObjectId(id) } )
 })
 //#endregion
 

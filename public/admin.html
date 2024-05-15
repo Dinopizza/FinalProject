@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="styles/site.css">
     <script src="scripts/site.js" defer></script>
+    <script>
+        window.onload = () => getAdminIds()
+    </script>
 </head>
 <body>
     <div class="wrapper">
@@ -20,7 +23,8 @@
             <a href="./admin.html">Admin</a>
         </nav>
     </div>
-    <div class="wrapper">
+
+    <div class="wrapper" id="im">
         <h1>Item Management</h1><br><hr>
         <h4>Add Item</h4>
         <form id="AddItem" onsubmit="Admin_AddItem()">

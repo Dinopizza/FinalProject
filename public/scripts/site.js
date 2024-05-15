@@ -1,4 +1,3 @@
-
 const getMenuItems = async () => {
 	const response = await fetch('/api/menu')
 	const MenuItems = await response.json()
@@ -18,9 +17,9 @@ const getMenuItems = async () => {
 
 const getEventItems = async () => {
 	const response = await fetch('/api/events')
-	const MenuItems = await response.json()
+	const EventItems = await response.json()
     let count = 0
-    MenuItems.forEach(Item => {
+    EventItems.forEach(Item => {
         const text = document.createElement('div')
         text.classList.add('wrapper');
         text.setAttribute('style', 'white-space: pre;');
@@ -41,6 +40,35 @@ const getEventItems = async () => {
         const currentDiv = document.getElementById("events")
         document.body.insertBefore(text, currentDiv)
     });
+}
+
+const getAdminIds = async () => {
+    const menuResponse = await fetch('/api/menu')
+	const MenuItems = await menuResponse.json()
+    const eventsResponse = await fetch('/api/events')
+	const EventItems = await eventsResponse.json()
+
+    const div = document.createElement("div")
+    div.classList.add("wrapper")
+    const menuTitle = document.createElement('h3')
+    menuTitle.textContent = "Menu ID's:"
+    const eventTitle = document.createElement('h3')
+    eventTitle.textContent = "Event ID's:"
+    
+    div.appendChild(menuTitle)
+    MenuItems.forEach(Item => {
+        text = document.createElement("p")
+        text.textContent += `${Item.name} - ${Item._id}`
+        div.appendChild(text)
+    })
+    div.appendChild(eventTitle)
+    EventItems.forEach(Item => {
+        text = document.createElement("p")
+        text.textContent += `${Item.name} - ${Item._id}`
+        div.appendChild(text)
+    })
+    const currentDiv = document.getElementById("im")
+    document.body.insertBefore(div, currentDiv)
 }
 
 const Admin_AddItem = async () => {
@@ -81,9 +109,7 @@ const Admin_DeleteItem = async () => {
     .then( raw => raw.json())
     .then( data => console.log(data))
 }
-
-
-
+///////////
 const Admin_AddEvent = async () => {
     const form = document.getElementById("AddEvent")
     const o = {}

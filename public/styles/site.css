@@ -2,12 +2,12 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #f4f4f4;
+	background-color: rgb(206, 206, 206);
 	min-height: 100vh;
 }
 
 div {
-	background-color: #fff;
+	background-color: rgb(255, 212, 162);
 	border: 1px solid #ddd;
 	margin: 20px auto;
 	padding: 20px;
@@ -20,13 +20,17 @@ h1 {
 	font-size: 1.7rem;
 }
 
+a {
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
 p {
 	font-size: 1rem;
 	font-style: italic;
 }
 
 img {
-  background-color: #fff;
+	background-color: rgb(255, 212, 162);
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -36,9 +40,9 @@ img {
 }
 
 button {
-	background-color: #5c5c5c;
+	background-color: rgb(206, 171, 130);
 	border: none;
-	color: white;
+	color: rgb(0, 0, 0);
 	padding: 10px 25px;
 	text-align: center;
 	text-decoration: none;
@@ -54,5 +58,16 @@ button {
 }
 
 button:hover {
-	background-color: #4CAF50;
+	background-color: rgb(151, 127, 99);
+	color: rgb(255, 255, 255);
+}
+
+input {
+	background-color: rgb(236, 196, 151);
+	border-radius: 25px;
+}
+
+input:hover {
+	background-color: rgb(151, 127, 99);
+	color: rgb(255, 255, 255);
 }
